@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My AngularJS App</title>
+  <link rel="stylesheet" href="app/css/main.css">
+</head>
+<body>
+  <div class="container" ng-app="myApp" ng-controller="MainController">
+  
+    <button ng-click="toggleTableVisibility()">{{ isTableVisible ? 'Ocultar Tabela' : 'Mostrar Tabela' }}</button>
+    
+    <div ng-if="isTableVisible" class="list-view">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Concurso</th>
+            <th>Números</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="result in megaSenaResults">
+            <td> {{ $index + 1 }}</td>
+            <td>{{ result.join(', ') }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div ng-if="!isTableVisible">
+      <h1>Escolha de 6 a 15 números</h1>
+      <div class="number-buttons">
+        <div ng-repeat="number in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60]">
+          <button ng-click="toggleNumber(number)" ng-class="{'btn-selected': isSelected(number), 'btn-default': !isSelected(number)}">{{ number }}</button>
+        </div>
+      </div>
+      <button ng-click="checkNumbers()" ng-disabled="userNumbers.length < 6 || userNumbers.length > 15">Verificar</button>
+      <button ng-click="reset()" style="color:red;">Resetar</button>
+      
+        <h1 ng-if="verified">Resultado: </h1>
+        <h1 ng-if="matchingResults.length == 0 && verified">Nenhum acerto</h1>
+        <div class="list-view">
+          <ul class="no-bullets" >
+            <li ng-repeat="result in matchingResults"> {{ result.join(', ') }}</li>
+          </ul>
+        </div>
+        
+      </div>
+   
+  
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+  <script src="app/js/app.js"></script>
+</body>
+</html>
