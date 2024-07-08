@@ -7,6 +7,7 @@ Este projeto é uma aplicação web desenvolvida com AngularJS e CoffeeScript pa
 - Node.js
 - npm
 - gulp
+- coffee-script
 
 ## Instalação
 
@@ -23,10 +24,10 @@ Este projeto é uma aplicação web desenvolvida com AngularJS e CoffeeScript pa
   npm install
 ```
 
-3. Instale o gulp globalmente, caso ainda não tenha:
+3. Instale o gulp e coffeeScript, caso ainda não tenha:
 
 ```sh
-  npm install -g gulp
+  npm install -g gulp coffee-script
 ```
 
 ## Como Rodar
